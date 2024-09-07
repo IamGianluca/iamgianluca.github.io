@@ -1,0 +1,28 @@
+[project]
+name = "website"
+version = "0.0.1"
+description = "Personal Website"
+authors = [{name= "Gianluca Rossi" , email= "gr.gianlucarossi@gmail.com" }]
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+readme = "README.md"
+dependencies = [
+    "arrow",
+    "python-fasthtml",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pynvim", # required for nvim lsp
+    "ruff",
+]
+
+
+[tool.ruff]
+src = ["src"]
+extend-include = ["*.ipynb"]
+lint.extend-select = ["I"]
+lint.extend-ignore = ["E741"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]

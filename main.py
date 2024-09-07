@@ -1,7 +1,16 @@
-from fasthtml import common as fh
 from datetime import datetime
 
+import arrow
+from fasthtml import common as fh
+
 app, rt = fh.fast_app(live=True)
+
+
+def get_ginny_age():
+    present = arrow.utcnow()
+    ginny_bday = arrow.get(2024, 3, 25)
+    return ginny_bday.humanize(present)
+
 
 def current_time():
     now = datetime.now()
@@ -11,23 +20,37 @@ def current_time():
 
 
 @rt("/")
-def get(): 
+def get():
     date, time = current_time()
     return fh.Titled(
         "Personal website",
-    fh.Div(fh.P("Ciao, and welcome to my website. My name is Luca and I'm passionate about machine learning and software engineering.")),
-    fh.Div(fh.P("I live in Brooklyn with my beautiful wife, our 5-month old daughter, and our dog London.")),
-    fh.Div(fh.P(f"FYI, today is {date} and time {time}.")),
-    fh.P(fh.A("Link", href="/change"))
+        fh.Div(
+            fh.P(
+                "Ciao, and welcome to my website. My name is Luca and I'm passionate about machine learning and software engineering."
+            )
+        ),
+        fh.Div(
+            fh.P(
+                f"I live in Brooklyn with my beautiful wife, our {get_ginny_age()} old daughter, and our dog London."
+            )
+        ),
+        fh.Div(fh.P(f"FYI, today is {date} and time {time}.")),
+        fh.P(fh.A("Link", href="/change")),
+    )
 
-)
 
 @rt("/change")
-def get(): 
+def get():
     return fh.Titled(
-       "About me", 
-            fh.Div(fh.P("Ciao Brig!")),
-            fh.P(fh.A("Home", href="/"))
-    )                 
+        "About me",
+        fh.Div(fh.P("Ciao Brig!")),
+        fh.Ul(
+            fh.Li("Ciao"),
+            fh.Li("Hello"),
+            fh.Li("Hola"),
+        ),
+        fh.P(fh.A("Home", href="/")),
+    )
+
 
 fh.serve()

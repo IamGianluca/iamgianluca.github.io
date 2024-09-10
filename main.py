@@ -18,7 +18,7 @@ def home():
         fh.Div(
             fh.Img(src=""),
             fh.P(
-                f"Ciao! My name is Luca and I'm passionate about machine learning and software engineering. I live in Brooklyn with my beautiful wife, our {baby_age()} old daughter, and our dog London."
+                f"Ciao! My name is Luca and I'm passionate about machine learning and software engineering. I live in Brooklyn with my amazing wife, our {baby_age()} old daughter, and our dog London."
             ),
         ),
         fh.Div(fh.P()),

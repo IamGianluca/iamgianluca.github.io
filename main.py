@@ -14,9 +14,8 @@ def baby_age():
 def home():
     return fh.Titled(
         "Gianluca Rossi",
-        fh.Img(src="https://avatars.githubusercontent.com/u/4025968"),
         fh.Div(
-            fh.Img(src=""),
+            fh.Img(src="./assets/luca-website-medium.jpeg", align="left", hspace="10"),
             fh.P(
                 f"Ciao! My name is Luca and I'm passionate about machine learning and software engineering. I live in Brooklyn with my amazing wife, our {baby_age()} old daughter, and our dog London."
             ),
